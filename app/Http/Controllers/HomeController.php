@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,27 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = User::find(Auth()->user()->id);
+        $user_country = [];
+        foreach ($user->country as $aux) {
+            $user_country = $aux;
+        }
+
+        $role = $this->getRoleUserLogguedIn();
+
+        return view('home')
+                ->with('role', $role)
+                ->with('user', $user)
+                ->with('user_country', $user_country);
+    }
+
+    private function getRoleUserLogguedIn(){
+        $dato = User::find(Auth()->user()->id);
+
+        foreach ($dato->getRoleNames() as $aux) {
+            $role = $aux;
+        }
+
+        return $role;
     }
 }
