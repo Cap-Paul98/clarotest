@@ -20,3 +20,17 @@ Route::get('/', function () {
 Auth::routes(["register" => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(['permission:index users'])->group(function () {
+    Route::get('users', 'UserController@index')->name('users');
+});
+
+Route::middleware(['permission:create users'])->group(function () {
+    Route::get('createuser', 'UserController@create')->name('createuser');
+    Route::post('storeuser', 'UserController@store')->name('storeuser');
+});
+
+Route::middleware(['permission:edit users'])->group(function () {
+    Route::get('edituser', 'UserController@edit')->name('edituser');
+    Route::post('updateuser', 'UserController@update')->name('updateuser');
+});

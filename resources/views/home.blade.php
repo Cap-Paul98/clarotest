@@ -35,11 +35,11 @@
     <div class="container-fluid mt-3">
         <div class="row m-0 px-2 py-4">
             <div class="col-sm-6">
-                <strong >Nombre:</strong>
+                <strong>Nombre:</strong>
             </div>
 
             <div class="col-sm-6">
-                <span >{{$user->name}}</span>
+                <span>{{$user->name}}</span>
             </div>
 
             <div class="col-sm-6">
@@ -47,7 +47,7 @@
             </div>
 
             <div class="col-sm-6">
-                <span >{{$user->email}}</span>
+                <span>{{$user->email}}</span>
             </div>
 
             <div class="col-sm-6">
@@ -55,7 +55,7 @@
             </div>
 
             <div class="col-sm-6">
-                <span >{{$user->userDate->nro_ci}}</span>
+                <span>{{$user->userDate->nro_ci}}</span>
             </div>
 
             <div class="col-sm-6">
@@ -63,7 +63,7 @@
             </div>
 
             <div class="col-sm-6">
-                <span >+ {{$user->userDate->city_code}}</span>
+                <span>+ {{$user->userDate->city_code}}</span>
             </div>
 
             <div class="col-sm-6">
@@ -71,7 +71,7 @@
             </div>
 
             <div class="col-sm-6">
-                <span >{{$user->userDate->cellphone}}</span>
+                <span>{{$user->userDate->cellphone}}</span>
             </div>
 
             <div class="col-sm-6">
@@ -79,7 +79,7 @@
             </div>
 
             <div class="col-sm-6">
-                <span >{{$user->userDate->birthday_date}}</span>
+                <span>{{$user->userDate->birthday_date}}</span>
             </div>
             
             <div class="col-sm-6">
@@ -87,7 +87,7 @@
             </div>
             
             <div class="col-sm-6">
-                <span >{{$user_country->country}}</span>
+                <span>{{$user_country->country}}</span>
             </div>
             
             <div class="col-sm-6">
@@ -95,7 +95,7 @@
             </div>
             
             <div class="col-sm-6">
-                <span >{{$user_country->state}}</span>
+                <span>{{$user_country->state}}</span>
             </div>
             
             <div class="col-sm-6">
@@ -103,7 +103,7 @@
             </div>
             
             <div class="col-sm-6">
-                <span >{{$user_country->city}}</span>
+                <span>{{$user_country->city}}</span>
             </div>
         </div>
     </div>
