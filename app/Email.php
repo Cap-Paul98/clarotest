@@ -13,7 +13,7 @@ class Email extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'addressee', 'shipping_date', 'status', 'email_body'
+        'user_id', 'addressee', 'subject', 'shipping_date', 'status', 'email_body'
     ];
 
     // relación de uno a muchos inversa con la tabla de usuarios (usuario que lo creo)

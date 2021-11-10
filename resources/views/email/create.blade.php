@@ -36,7 +36,7 @@
         <div class="row m-0 p-0">
             
             <div class="col-12">
-                <form action="" method="post" class="was-validated">
+                <form action="{{route('storeemail')}}" method="post" class="was-validated">
                     @csrf
                     <div class="row p-0 m-0">
                         <div class="col-12">

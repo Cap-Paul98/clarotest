@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Jobs\SendEmail;
 use App\Email;
 use App\User;
 
@@ -86,6 +87,9 @@ class EmailController extends Controller
             'status' => "NO ENVIADO",
             'email_body' => $request->input('body'),
         ]);
+
+        //Guardamos el mail en la cola de jobs para que se ejecuten ni bien se introduzco el comando por artisan
+        SendEmail::dispatch($email->addressee, $email->subject, $email->shipping_date, $email->email_body);
         
         return redirect('emails')->with('success', 'Correo en cola para ser enviado');
     }
