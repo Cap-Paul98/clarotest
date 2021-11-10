@@ -70,7 +70,7 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}" style="font-size: 30px">Login</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
@@ -85,8 +85,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://www.pauljimenez.xyz/" target="_blank">Info Postulante</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://www.pauljimenez.xyz/" target="_blank">Información Postulante</a>
+                    <a href="https://github.com/Cap-Paul98/clarotest.git">GitHub Repositorio</a>
                 </div>
             </div>
         </div>
