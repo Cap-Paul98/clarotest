@@ -42,10 +42,10 @@ Route::middleware(['permission:delete users'])->group(function () {
 
 // rutas para indexar y crear emails
 Route::middleware(['permission:index email'])->group(function () {
-    Route::get('users', 'UserController@index')->name('users');
+    Route::get('emails', 'EmailController@index')->name('emails');
 });
 
-Route::middleware(['permission:create email'])->group(function () {
-    Route::get('createuser', 'UserController@create')->name('createuser');
-    Route::post('storeuser', 'UserController@store')->name('storeuser');
+Route::middleware(['permission:send email'])->group(function () {
+    Route::get('createemail', 'EmailController@create')->name('createemail');
+    Route::post('storeemail', 'EmailController@store')->name('storeemail');
 });

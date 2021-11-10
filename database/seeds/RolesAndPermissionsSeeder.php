@@ -25,7 +25,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'edit users',
             'delete users',
             'index email',
-            'create email',
+            'send email',
             //
         ]);
 
@@ -36,12 +36,12 @@ class RolesAndPermissionsSeeder extends Seeder
                 'edit users',
                 'delete users',
                 'index email',
-                'create email',
+                'send email',
             ],
 
             'user' => [
                 'index email',
-                'create email',
+                'send email',
             ],
 
             

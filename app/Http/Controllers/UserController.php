@@ -123,6 +123,9 @@ class UserController extends Controller
         // asignar el rol seleccionado
         $new_user->assignRole($request->input('role'));
 
+        //cambiar para cumplir con los requisitos
+        $new_user->country()->attach(1);
+
         return redirect('users')->with('success', 'Datos guardados con éxito');
     }
 

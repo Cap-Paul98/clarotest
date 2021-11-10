@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Email;
 use Illuminate\Http\Request;
+use App\Email;
+use App\User;
 
 class EmailController extends Controller
 {
@@ -24,7 +25,30 @@ class EmailController extends Controller
      */
     public function index()
     {
-        //
+        // obtenemos el rol del usuario logueado
+        $role = $this->getRoleUserLogguedIn();
+
+        $emails = [];
+
+        switch ($role) {
+            // si es admin hay que enlistar todos los correos y averiguar el nombre del remitente de cada correo
+            case 'admin':
+                $emails = Email::all();
+
+                foreach ($emails as $aux) {
+                    $aux->sender = User::find($aux->user_id)->name;
+                }
+                break;
+            
+            // si es user solo mostrará los correos pertenecientes al usuario
+            case 'user':
+                $emails = Email::where('user_id', Auth()->user()->id)->get();
+                break;
+        }
+
+        return view('email.index')
+                ->with('role', $role)
+                ->with('emails', $emails);
     }
 
     /**
@@ -34,7 +58,10 @@ class EmailController extends Controller
      */
     public function create()
     {
-        //
+        $role = $this->getRoleUserLogguedIn();
+
+        return view('email.create')
+                ->with('role', $role);
     }
 
     /**
@@ -45,7 +72,22 @@ class EmailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $this->validate(request(), [
+            'destinatario' => 'required|email',
+            'subject' => 'required|string|max:100',
+            'body' => 'required|string'
+        ]);
+
+        $email = Email::create([
+            'user_id' => Auth()->user()->id,
+            'addressee' => $request->input('destinatario'),
+            'subject' => $request->input('subject'),
+            'shipping_date' => now(),
+            'status' => "NO ENVIADO",
+            'email_body' => $request->input('body'),
+        ]);
+        
+        return redirect('emails')->with('success', 'Correo en cola para ser enviado');
     }
 
     /**
@@ -91,5 +133,17 @@ class EmailController extends Controller
     public function destroy(Email $email)
     {
         //
+    }
+
+    // funciones privada de la clase
+    // obtiene el rol del usuario logueado
+    private function getRoleUserLogguedIn(){
+        $dato = User::find(Auth()->user()->id);
+
+        foreach ($dato->getRoleNames() as $aux) {
+            $role = $aux;
+        }
+
+        return $role;
     }
 }

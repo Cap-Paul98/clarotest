@@ -85,7 +85,7 @@
                         @endcan
 
                         @can('index email')
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{route('emails')}}">
                                 <div class="sb-nav-link-icon">
                                     <i class="fas fa-inbox"></i>
                                 </div>
