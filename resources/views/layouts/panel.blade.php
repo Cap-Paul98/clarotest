@@ -111,17 +111,11 @@
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-dark">Copyright © PJ 2021</div>
                         <div>
-                            <a href="#" target="_blank">
-                                Políticas de Privacidad
-                            </a>
-                            ·
-                            <a href="#" target="_blank">
-                                Términos &amp; Condiciones
-                            </a>
                             ·
                             <a href="https://www.pauljimenez.xyz/" target="_blank">
-                                Info Dessarrollado Web
+                                Info Dessarrollador Web
                             </a>
+                            ·
                         </div>
                     </div>
                 </div>
@@ -148,9 +142,6 @@
 
     {{-- TEMA PANEL --}}
     <script type="text/javascript" src="{{asset('panel/js/scripts.js')}}"></script>
-
-    {{-- Librerías auxiliares --}}
-    <script type="text/javascript" src="{{asset('js/auxiliar.js')}}"></script>
 
     {{-- Libre --}}
     @section('js')

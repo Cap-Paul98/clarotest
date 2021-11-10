@@ -71,9 +71,9 @@
                                     @endcan
                                     
                                     @can('delete users')
-                                        <a href="#" class="btn btn-danger btn-sm m-1 py-2 px-3" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                        <button class="btn btn-danger btn-sm m-1 py-2 px-3 eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar" value="{{$aux->id}}">
                                             <i class="fas fa-trash-alt fa-2x"></i>
-                                        </a>
+                                        </button>
                                     @endcan
                                 </td>
                             </tr>
@@ -93,6 +93,44 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-danger" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header bg-danger text-white">
+                    <p class="heading lead">Eliminar</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <p>¿Está seguro de eliminar al usuario <b><label id="mname" name="mname"></label></b>?</p>
+                        <p>Esta acción es irreversible y eliminará toda información creada por el mismo</p>
+                        <form id="userdelete-form" action="{{route('deleteuser')}}" method="post" style="display: none">
+                            @csrf
+                            <input type="text" id="mid" name="mid">
+                        </form>
+                    </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn btn-outline-danger waves-effect btn-md" data-dismiss="modal">
+                        Cancelar
+                    </a>
+                    <a type="button" class="btn btn-danger btn-md" href="{{route('deleteuser')}}" onclick="event.preventDefault(); document.getElementById('userdelete-form').submit();">
+                        Eliminar
+                    </a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
 @endsection
 
 @section('js')
@@ -100,6 +138,19 @@
         $(document).ready(function () {
             $('#dataTable').DataTable();
             $('.dataTables_length').addClass('bs-select');
+        });
+
+        $(document).on('click', '.eliminar', function () {
+            var id = $(this).val();
+            var nombre = $('#name' + id).text();
+            
+            $('#modalEliminar').modal('show');
+            
+            $inputid = document.getElementById("mid");
+            $inputid.setAttribute("value", id);
+
+            $inputdescripcion = document.getElementById("mname");
+            $inputdescripcion.innerHTML = nombre;
         });
     </script>
 @endsection
