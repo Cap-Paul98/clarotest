@@ -89,7 +89,7 @@ class EmailController extends Controller
         ]);
 
         //Guardamos el mail en la cola de jobs para que se ejecuten ni bien se introduzco el comando por artisan
-        SendEmail::dispatch($email->addressee, $email->subject, $email->shipping_date, $email->email_body);
+        SendEmail::dispatch($email->id, $email->addressee, $email->subject, $email->shipping_date, $email->email_body);
         
         return redirect('emails')->with('success', 'Correo en cola para ser enviado');
     }

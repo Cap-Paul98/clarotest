@@ -67,7 +67,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">E-mail</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" readonly>
+                                <input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" readonly required>
                             </div>
                         </div>
 
